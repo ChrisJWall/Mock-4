@@ -24,17 +24,21 @@ def find_frequencies(lines):
 def print_words(collection):
     finished = False
     while len(collection) > 0:
-        # current_max = max(collection)
-        print(current_max)
-        collection.pop(current_max)
+        temp_lst = []
+        maxi = max(collection.values())
+        for key, value in collection.items():
+            if value == maxi:
+                temp_lst.append(key)
+        temp_lst = sorted(temp_lst)
+        for word in temp_lst:
+            print(word)
+            collection.pop(word)
+
 
 def main():
     n = get_n()
-    print(n)
     lines = get_lines(n)
-    print(lines)
     collection = find_frequencies(lines)
-    print(collection)
     print_words(collection)
 
 if __name__ == '__main__':
